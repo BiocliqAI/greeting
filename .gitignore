@@ -1,0 +1,35 @@
+# Gitignore for the root directory
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Trashes
+*.sublime-project
+*.sublime-workspace
+
+# Logs
+*.log
+
+# Dependency directories
+node_modules/
+
+# Build artifacts
+build/
+dist/
+
+# Environment variables
+.env
+.env.local
+.env.*
+
+# Railway specific
+.railway/
+
+# Backend specific (already in backend/.gitignore, but good to have here too)
+backend/node_modules/
+backend/uploads/
+
+# Frontend specific (already in frontend/.gitignore, but good to have here too)
+frontend/node_modules/
+frontend/dist/
