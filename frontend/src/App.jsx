@@ -4,7 +4,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import ImageGenerator from './components/ImageGenerator';
 import VideoGenerator from './components/VideoGenerator';
 
-const BACKEND_BASE_URL = 'http://localhost:3001';
+// Use environment variable for backend URL, fallback to localhost for local development
+const BACKEND_BASE_URL = process.env.VITE_BACKEND_BASE_URL || 'http://localhost:3001';
 
 function App() {
   const [generatedLocalImageUrl, setGeneratedLocalImageUrl] = useState(null);
