@@ -1,0 +1,47 @@
+{
+  "$schema": "https://railway.app/railway.schema.json",
+  "build": {
+    "builder": "NIXPACKS",
+    "buildCommand": "./build.sh"
+  },
+  "deploy": {
+    "numReplicas": 1,
+    "healthcheckPath": "/",
+    "healthcheckTimeout": 300
+  },
+  "services": [
+    {
+      "name": "backend",
+      "root": "backend",
+      "build": {
+        "builder": "NIXPACKS",
+        "buildCommand": "" 
+      },
+      "deploy": {
+        "startCommand": "npm start", 
+        "healthcheckPath": "/",
+        "healthcheckTimeout": 300,
+        "environment": {
+          "PORT": "3001",
+          "REPLICATE_API_TOKEN": "${REPLICATE_API_TOKEN}"
+        }
+      }
+    },
+    {
+      "name": "frontend",
+      "root": "frontend",
+      "build": {
+        "builder": "NIXPACKS",
+        "buildCommand": "" 
+      },
+      "deploy": {
+        "startCommand": "npm start", 
+        "healthcheckPath": "/",
+        "healthcheckTimeout": 300,
+        "environment": {
+          "VITE_BACKEND_BASE_URL": "${{backend.URL}}"
+        }
+      }
+    }
+  ]
+}
